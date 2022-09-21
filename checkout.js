@@ -34,6 +34,7 @@ productsDiv.addEventListener("click", (event)=>{
     }
     else if(event.target.classList.contains("fa-plus")){
         // console.log("plus btn is clicked!")
+        event.target.previousElementSibling.innerText++;
     }
     else if(event.target.className == "remove-product"){
         // console.log("remove btn is clicked!");
