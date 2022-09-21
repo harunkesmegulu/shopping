@@ -27,6 +27,7 @@ productsDiv.addEventListener("click", (event)=>{
         else{
             if(confirm("Product will be removed!")){
                 //remove//
+                event.target.parentElement.parentElement.parentElement.remove();
             }
         }
         
