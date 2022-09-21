@@ -1,18 +1,18 @@
-// const taxRate = 0.18;
-// const shippingPrice = 15;
-// const shippingFreePrice = 300;
+const taxRate = 0.18;
+const shippingPrice = 15;
+const shippingFreePrice = 300;
 
 window.addEventListener("load", ()=>{
     calculateCartPrice();
     //set items to LocalStorage
-    // localStorage.setItem("taxRate", taxRate);
-    // localStorage.setItem("shippingPrice", shippingPrice);
-    // localStorage.setItem("shippingFreePrice", shippingFreePrice);
+    localStorage.setItem("taxRate", taxRate);
+    localStorage.setItem("shippingPrice", shippingPrice);
+    localStorage.setItem("shippingFreePrice", shippingFreePrice);
 
-     //set items to sessionStorage
-    //  sessionStorage.setItem("taxRate", taxRate);
-    //  sessionStorage.setItem("shippingPrice", shippingPrice);
-    //  sessionStorage.setItem("shippingFreePrice", shippingFreePrice);
+    //  set items to sessionStorage//
+     sessionStorage.setItem("taxRate", taxRate);
+     sessionStorage.setItem("shippingPrice", shippingPrice);
+     sessionStorage.setItem("shippingFreePrice", shippingFreePrice);
 });
 
 const productsDiv = document.querySelector(".products");
@@ -26,7 +26,7 @@ productsDiv.addEventListener("click", (event)=>{
             calculateCartPrice();
         }
         else{
-            if(confirm("Product will be removed???")){
+            if(confirm(`${event.target.parentElement.parentElement.querySelector("h2").innerText} will be deleted!!!`)){
                 //remove
                 event.target.parentElement.parentElement.parentElement.remove();
                 calculateCartPrice();
@@ -75,9 +75,10 @@ const calculateCartPrice = () =>{
     const shippingPrice = parseFloat(subtotal > 0 && subtotal < localStorage.getItem("shippingFreePrice") ? localStorage.getItem("shippingPrice") : 0);
 
     console.log(shippingPrice);
-    document.querySelector("^#cart-subtotal").lastElementChild.innerText = subtotal.toFixed(2);
-    document.querySelector("^#cart-tax p:nth-child(2)").innerText = taxPrice.toFixed(2);
-    document.querySelector("^#cart-shipping").innerText = shippingPrice.toFixed(2);
-    document.querySelector("^#cart-total").lastElementChild.innerText = (subtotal+ taxPrice + shippingPrice).toFixed(2);
-    
+
+    document.querySelector("#cart-subtotal").lastElementChild.innerText = subtotal.toFixed(2);
+    document.querySelector("#cart-tax p:nth-child(2)").innerText = taxPrice.toFixed(2);
+    document.querySelector("#cart-shipping").children[1].innerText = shippingPrice.toFixed(2);
+    document.querySelector("#cart-total").lastElementChild.innerText = (subtotal + taxPrice + shippingPrice).toFixed(2);
+
 }
